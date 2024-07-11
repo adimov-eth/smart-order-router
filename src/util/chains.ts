@@ -26,6 +26,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.BLAST,
   ChainId.ZORA,
   ChainId.ZKSYNC,
+  ChainId.AURORIA
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -51,6 +52,7 @@ export const HAS_L1_FEE = [
   ChainId.BASE_GOERLI,
   ChainId.BLAST,
   ChainId.ZORA,
+  ChainId.AURORIA,
 ];
 
 export const NETWORKS_WITH_SAME_UNISWAP_ADDRESSES = [
@@ -108,6 +110,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.ZORA;
     case 324:
       return ChainId.ZKSYNC;
+    case 205205:
+      return ChainId.AURORIA
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -363,6 +367,13 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WETH',
     'Wrapped Ether'
+  ),
+  [ChainId.AURORIA]: new Token(
+    205205,
+    '0x7b7E6F779c497df2e9EAF8C311d44A296E4F316D',
+    18,
+    'wSTRAX',
+    'Wrapped STRAX'
   ),
   [ChainId.GOERLI]: new Token(
     5,
