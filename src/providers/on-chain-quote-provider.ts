@@ -417,7 +417,8 @@ export class OnChainQuoteProvider implements IOnChainQuoteProvider {
               )
             : encodeMixedRouteToPath(
                 route instanceof V2Route
-                  ? new MixedRouteSDK(route.pairs, route.input, route.output)
+                  ? //@ts-ignore
+                    new MixedRouteSDK(route.pairs, route.input, route.output)
                   : route
               );
         const routeInputs: [string, string][] = amounts.map((amount) => [

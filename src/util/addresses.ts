@@ -1,6 +1,6 @@
 import {
-  ChainId,
   CHAIN_TO_ADDRESSES_MAP,
+  ChainId,
   SWAP_ROUTER_02_ADDRESSES as SWAP_ROUTER_02_ADDRESSES_HELPER,
   Token,
 } from '@uniswap/sdk-core';
@@ -41,7 +41,8 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   [ChainId.BLAST]: CHAIN_TO_ADDRESSES_MAP[ChainId.BLAST].v3CoreFactoryAddress,
   [ChainId.ZORA]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZORA].v3CoreFactoryAddress,
   [ChainId.ZKSYNC]: CHAIN_TO_ADDRESSES_MAP[ChainId.ZKSYNC].v3CoreFactoryAddress,
-  [ChainId.AURORIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.AURORIA].v3CoreFactoryAddress,
+  [ChainId.AURORIA]:
+    CHAIN_TO_ADDRESSES_MAP[ChainId.AURORIA].v3CoreFactoryAddress,
   // TODO: Gnosis + Moonbeam contracts to be deployed
 };
 
@@ -124,7 +125,10 @@ export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
 };
 
 export const SWAP_ROUTER_02_ADDRESSES = (chainId: number): string => {
-  return SWAP_ROUTER_02_ADDRESSES_HELPER(chainId) ?? '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45';
+  return (
+    SWAP_ROUTER_02_ADDRESSES_HELPER(chainId) ??
+    '0x68b3465833fb72A70ecDF485E0e4C7bD8665Fc45'
+  );
 };
 
 export const OVM_GASPRICE_ADDRESS =

@@ -688,6 +688,14 @@ export const DAI_ZKSYNC = new Token(
   'Dai Stablecoin'
 );
 
+export const DAI_AURORIA = new Token(
+  ChainId.AURORIA,
+  '0xcC9c7c69415C10C0d967eDCBaA620f919004B6f5',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+);
+
 export class TokenProvider implements ITokenProvider {
   constructor(
     private chainId: ChainId,

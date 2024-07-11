@@ -13,6 +13,10 @@ import {
   TokenValidationResult,
 } from '../../../providers';
 import {
+  ArbitrumGasData,
+  IL2GasDataProvider,
+} from '../../../providers/v3/gas-data-provider';
+import {
   CurrencyAmount,
   log,
   metric,
@@ -30,10 +34,6 @@ import {
 import { IGasModel, IV2GasModelFactory } from '../gas-models';
 import { NATIVE_OVERHEAD } from '../gas-models/v3/gas-costs';
 
-import {
-  ArbitrumGasData,
-  IL2GasDataProvider,
-} from '../../../providers/v3/gas-data-provider';
 import { BaseQuoter } from './base-quoter';
 import { GetQuotesResult } from './model/results/get-quotes-result';
 import { GetRoutesResult } from './model/results/get-routes-result';

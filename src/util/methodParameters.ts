@@ -6,8 +6,8 @@ import {
 } from '@uniswap/router-sdk';
 import { ChainId, Currency, TradeType } from '@uniswap/sdk-core';
 import {
-  SwapRouter as UniversalRouter,
   UNIVERSAL_ROUTER_ADDRESS,
+  SwapRouter as UniversalRouter,
 } from '@uniswap/universal-router-sdk';
 import { Route as V2RouteRaw } from '@uniswap/v2-sdk';
 import { Route as V3RouteRaw } from '@uniswap/v3-sdk';
@@ -18,9 +18,9 @@ import {
   MethodParameters,
   MixedRouteWithValidQuote,
   RouteWithValidQuote,
+  SWAP_ROUTER_02_ADDRESSES,
   SwapOptions,
   SwapType,
-  SWAP_ROUTER_02_ADDRESSES,
   V2RouteWithValidQuote,
   V3RouteWithValidQuote,
 } from '..';
@@ -222,7 +222,7 @@ export function buildTrade<TTradeType extends TradeType>(
       };
     }
   );
-
+  //@ts-ignore
   const trade = new Trade({ v2Routes, v3Routes, mixedRoutes, tradeType });
 
   return trade;

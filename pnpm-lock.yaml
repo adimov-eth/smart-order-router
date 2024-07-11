@@ -11,6 +11,27 @@ importers:
       '@eth-optimism/sdk':
         specifier: ^3.2.2
         version: 3.3.2(ethers@5.7.2)
+      '@ethersproject/abi':
+        specifier: ^5.7.0
+        version: 5.7.0
+      '@ethersproject/bignumber':
+        specifier: ^5.7.0
+        version: 5.7.0
+      '@ethersproject/bytes':
+        specifier: ^5.7.0
+        version: 5.7.0
+      '@ethersproject/constants':
+        specifier: ^5.7.0
+        version: 5.7.0
+      '@ethersproject/logger':
+        specifier: ^5.7.0
+        version: 5.7.0
+      '@ethersproject/strings':
+        specifier: ^5.7.0
+        version: 5.7.0
+      '@ethersproject/units':
+        specifier: ^5.7.0
+        version: 5.7.0
       '@types/brotli':
         specifier: ^1.3.4
         version: 1.3.4

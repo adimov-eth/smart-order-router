@@ -50,6 +50,7 @@ export function computeAllMixedRoutes(
     tokenIn,
     tokenOut,
     (route: (Pool | Pair)[], tokenIn: Token, tokenOut: Token) => {
+      //@ts-ignore
       return new MixedRoute(route, tokenIn, tokenOut);
     },
     parts,

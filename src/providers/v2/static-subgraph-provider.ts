@@ -30,7 +30,8 @@ import {
   USDC_NATIVE_ARBITRUM,
   USDC_OPTIMISM,
   USDC_POLYGON,
-  USDC_ZKSYNC, USDCE_ZKSYNC,
+  USDC_ZKSYNC,
+  USDCE_ZKSYNC,
   USDT_ARBITRUM,
   USDT_BNB,
   USDT_MAINNET,
@@ -40,7 +41,7 @@ import {
   WBTC_MOONBEAM,
   WBTC_OPTIMISM,
   WETH_POLYGON,
-  WMATIC_POLYGON
+  WMATIC_POLYGON,
 } from '../token-provider';
 
 import { IV2SubgraphProvider, V2SubgraphPool } from './subgraph-provider';
@@ -57,6 +58,7 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     USDT_MAINNET,
     WBTC_MAINNET,
   ],
+  [ChainId.AURORIA]: [WRAPPED_NATIVE_CURRENCY[ChainId.AURORIA]!],
   [ChainId.GOERLI]: [WRAPPED_NATIVE_CURRENCY[ChainId.GOERLI]!],
   [ChainId.SEPOLIA]: [WRAPPED_NATIVE_CURRENCY[ChainId.SEPOLIA]!],
   //v2 not deployed on [arbitrum, polygon, celo, gnosis, moonbeam, bnb, avalanche] and their testnets
@@ -112,7 +114,11 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.ZORA_SEPOLIA]: [WRAPPED_NATIVE_CURRENCY[ChainId.ZORA_SEPOLIA]!],
   [ChainId.ROOTSTOCK]: [WRAPPED_NATIVE_CURRENCY[ChainId.ROOTSTOCK]!],
   [ChainId.BLAST]: [WRAPPED_NATIVE_CURRENCY[ChainId.BLAST]!, USDB_BLAST],
-  [ChainId.ZKSYNC]: [WRAPPED_NATIVE_CURRENCY[ChainId.ZKSYNC]!, USDCE_ZKSYNC, USDC_ZKSYNC],
+  [ChainId.ZKSYNC]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.ZKSYNC]!,
+    USDCE_ZKSYNC,
+    USDC_ZKSYNC,
+  ],
 };
 
 /**

@@ -3,7 +3,7 @@ import {
   Currency,
   Ether,
   NativeCurrency,
-  Token
+  Token,
 } from '@uniswap/sdk-core';
 
 // WIP: Gnosis, Moonbeam
@@ -26,7 +26,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.BLAST,
   ChainId.ZORA,
   ChainId.ZKSYNC,
-  ChainId.AURORIA
+  ChainId.AURORIA,
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -111,7 +111,7 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
     case 324:
       return ChainId.ZKSYNC;
     case 205205:
-      return ChainId.AURORIA
+      return ChainId.AURORIA;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
