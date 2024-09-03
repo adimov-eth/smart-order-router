@@ -85,11 +85,16 @@ import {
   V3PoolProvider,
 } from '../../providers/v3/pool-provider';
 import { IV3SubgraphProvider } from '../../providers/v3/subgraph-provider';
+import { CachingV4PoolProvider } from '../../providers/v4/caching-pool-provider';
+import {
+  IV4PoolProvider,
+  V4PoolProvider,
+} from '../../providers/v4/pool-provider';
 import { Erc20__factory } from '../../types/other/factories/Erc20__factory';
 import {
   SWAP_ROUTER_02_ADDRESSES,
   V4_SUPPORTED,
-  WRAPPED_NATIVE_CURRENCY
+  WRAPPED_NATIVE_CURRENCY,
 } from '../../util';
 import { CurrencyAmount } from '../../util/amounts';
 import {
@@ -138,11 +143,7 @@ import {
   V4Route,
 } from '../router';
 
-import { CachingV4PoolProvider } from '../../providers/v4/caching-pool-provider';
-import {
-  IV4PoolProvider,
-  V4PoolProvider,
-} from '../../providers/v4/pool-provider';
+
 import {
   DEFAULT_ROUTING_CONFIG_BY_CHAIN,
   ETH_GAS_STATION_API_URL,

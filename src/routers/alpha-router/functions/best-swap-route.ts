@@ -7,6 +7,7 @@ import FixedReverseHeap from 'mnemonist/fixed-reverse-heap';
 import Queue from 'mnemonist/queue';
 
 import { IPortionProvider } from '../../../providers/portion-provider';
+import { ProviderConfig } from '../../../providers/provider';
 import { HAS_L1_FEE, V2_SUPPORTED, V4_SUPPORTED } from '../../../util';
 import { CurrencyAmount } from '../../../util/amounts';
 import { log } from '../../../util/log';
@@ -16,7 +17,6 @@ import { SwapOptions } from '../../router';
 import { AlphaRouterConfig } from '../alpha-router';
 import { IGasModel, L1ToL2GasCosts, usdGasTokensByChain } from '../gas-models';
 
-import { ProviderConfig } from '../../../providers/provider';
 import {
   RouteWithValidQuote,
   V2RouteWithValidQuote,
@@ -500,7 +500,11 @@ export async function getBestSwapRouteBy(
   // If swapping on an L2 that includes a L1 security fee, calculate the fee and include it in the gas adjusted quotes
   if (HAS_L1_FEE.includes(chainId)) {
     // ROUTE-249: consoliate L1 + L2 gas fee adjustment within best-swap-route
-    if (v2GasModel == undefined && v3GasModel == undefined && v4GasModel == undefined) {
+    if (
+      v2GasModel == undefined &&
+      v3GasModel == undefined &&
+      v4GasModel == undefined
+    ) {
       throw new Error("Can't compute L1 gas fees.");
     } else {
       // Before v2 deploy everywhere, a quote on L2 can only go through v3 protocol,

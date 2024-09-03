@@ -4,11 +4,7 @@ import {
   SwapRouter as SwapRouter02,
   Trade,
 } from '@uniswap/router-sdk';
-import {
-  ChainId,
-  Currency,
-  TradeType,
-} from '@uniswap/sdk-core';
+import { ChainId, Currency, TradeType } from '@uniswap/sdk-core';
 import {
   UNIVERSAL_ROUTER_ADDRESS,
   SwapRouter as UniversalRouter,
@@ -28,7 +24,7 @@ import {
   SwapType,
   V2RouteWithValidQuote,
   V3RouteWithValidQuote,
-  V4RouteWithValidQuote
+  V4RouteWithValidQuote,
 } from '..';
 
 export function buildTrade<TTradeType extends TradeType>(

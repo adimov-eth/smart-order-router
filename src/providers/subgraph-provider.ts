@@ -5,9 +5,9 @@ import Timeout from 'await-timeout';
 import { gql, GraphQLClient } from 'graphql-request';
 import _ from 'lodash';
 
+import { SubgraphPool } from '../routers/alpha-router/functions/get-candidate-pools';
 import { log, metric } from '../util';
 
-import { SubgraphPool } from '../routers/alpha-router/functions/get-candidate-pools';
 import { ProviderConfig } from './provider';
 
 export interface ISubgraphProvider<TSubgraphPool extends SubgraphPool> {

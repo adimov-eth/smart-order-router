@@ -1,6 +1,7 @@
 import { Protocol } from '@uniswap/router-sdk';
 import { ChainId, Currency, Token, TradeType } from '@uniswap/sdk-core';
 import _ from 'lodash';
+
 import {
   IOnChainQuoteProvider,
   ITokenListProvider,
@@ -26,6 +27,7 @@ import {
   V4CandidatePools,
 } from '../functions/get-candidate-pools';
 import { IGasModel } from '../gas-models';
+
 import { BaseQuoter } from './base-quoter';
 import { GetQuotesResult, GetRoutesResult } from './model';
 

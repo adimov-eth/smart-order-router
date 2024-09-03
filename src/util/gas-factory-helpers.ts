@@ -1,6 +1,9 @@
+import { estimateL1Gas, estimateL1GasCost } from '@eth-optimism/sdk';
 import { BigNumber } from '@ethersproject/bignumber';
+import { BaseProvider, TransactionRequest } from '@ethersproject/providers';
 import { Protocol } from '@uniswap/router-sdk';
 import { ChainId, Percent, Token, TradeType } from '@uniswap/sdk-core';
+import { Pair } from '@uniswap/v2-sdk';
 import { FeeAmount, Pool } from '@uniswap/v3-sdk';
 import brotli from 'brotli';
 import JSBI from 'jsbi';
@@ -8,6 +11,7 @@ import _ from 'lodash';
 
 import { IV2PoolProvider, IV4PoolProvider } from '../providers';
 import { IPortionProvider } from '../providers/portion-provider';
+import { ProviderConfig } from '../providers/provider';
 import { ArbitrumGasData } from '../providers/v3/gas-data-provider';
 import { IV3PoolProvider } from '../providers/v3/pool-provider';
 import {
@@ -27,10 +31,8 @@ import {
 } from '../routers';
 import { CurrencyAmount, log, WRAPPED_NATIVE_CURRENCY } from '../util';
 
-import { estimateL1Gas, estimateL1GasCost } from '@eth-optimism/sdk';
-import { BaseProvider, TransactionRequest } from '@ethersproject/providers';
-import { Pair } from '@uniswap/v2-sdk';
-import { ProviderConfig } from '../providers/provider';
+
+
 import { opStackChains } from './l2FeeChains';
 import { buildSwapMethodParameters, buildTrade } from './methodParameters';
 
