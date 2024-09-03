@@ -46,6 +46,8 @@ const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
     'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
   // todo: add once subgraph is live
   [ChainId.ARBITRUM_SEPOLIA]: '',
+  [ChainId.STRATIS]:
+    'http://138.201.91.50:8000/subgraphs/name/ianlapham/uniswap-v3',
   [ChainId.POLYGON]:
     'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-polygon',
   [ChainId.CELO]:

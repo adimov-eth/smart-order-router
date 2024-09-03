@@ -43,6 +43,11 @@ import {
   WETH_POLYGON,
   WMATIC_POLYGON,
   WSTETH_MAINNET,
+  // USDC_STRATIS,
+  // USDT_STRATIS,
+  // WSTRAX_STRATIS,
+  // USDC_STRATIS_AURORIA,
+  // WSTRAX_STRATIS_AURORIA,
 } from '../token-provider';
 
 import { IV2SubgraphProvider, V2SubgraphPool } from './subgraph-provider';
@@ -62,6 +67,8 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ],
   [ChainId.GOERLI]: [WRAPPED_NATIVE_CURRENCY[ChainId.GOERLI]!],
   [ChainId.SEPOLIA]: [WRAPPED_NATIVE_CURRENCY[ChainId.SEPOLIA]!],
+  [ChainId.STRATIS]: [],
+  [ChainId.STRATIS_AURORIA]: [],
   //v2 not deployed on [arbitrum, polygon, celo, gnosis, moonbeam, bnb, avalanche] and their testnets
   [ChainId.OPTIMISM]: [
     WRAPPED_NATIVE_CURRENCY[ChainId.OPTIMISM]!,

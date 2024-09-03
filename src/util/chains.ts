@@ -9,6 +9,8 @@ import {
 // WIP: Gnosis, Moonbeam
 export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.MAINNET,
+  ChainId.STRATIS,
+  ChainId.STRATIS_AURORIA,
   ChainId.OPTIMISM,
   ChainId.OPTIMISM_GOERLI,
   ChainId.OPTIMISM_SEPOLIA,
@@ -68,6 +70,10 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
   switch (id) {
     case 1:
       return ChainId.MAINNET;
+    case 105105:
+      return ChainId.STRATIS;
+    case 205205:
+      return ChainId.STRATIS_AURORIA;
     case 5:
       return ChainId.GOERLI;
     case 11155111:
@@ -117,6 +123,8 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
 
 export enum ChainName {
   MAINNET = 'mainnet',
+  STRATIS = 'stratis-mainnet',
+  STRATIS_AURORIA = 'stratis-auroria-mainnet',
   GOERLI = 'goerli',
   SEPOLIA = 'sepolia',
   OPTIMISM = 'optimism-mainnet',
@@ -144,6 +152,7 @@ export enum NativeCurrencyName {
   // Strings match input for CLI
   ETHER = 'ETH',
   MATIC = 'MATIC',
+  STRAX = 'STRAX',
   CELO = 'CELO',
   GNOSIS = 'XDAI',
   MOONBEAM = 'GLMR',
@@ -156,6 +165,14 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
     'ETH',
     'ETHER',
     '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+  ],
+  [ChainId.STRATIS]: [
+    'STRAX',
+    '0x0000000000000000000000000000000000000000',
+  ],
+  [ChainId.STRATIS_AURORIA]: [
+    'STRAX',
+    '0x0000000000000000000000000000000000000000',
   ],
   [ChainId.GOERLI]: [
     'ETH',
@@ -236,6 +253,8 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.MAINNET]: NativeCurrencyName.ETHER,
+  [ChainId.STRATIS]: NativeCurrencyName.STRAX,
+  [ChainId.STRATIS_AURORIA]: NativeCurrencyName.STRAX,
   [ChainId.GOERLI]: NativeCurrencyName.ETHER,
   [ChainId.SEPOLIA]: NativeCurrencyName.ETHER,
   [ChainId.OPTIMISM]: NativeCurrencyName.ETHER,
@@ -317,6 +336,10 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
   switch (id) {
     case ChainId.MAINNET:
       return process.env.JSON_RPC_PROVIDER!;
+    case ChainId.STRATIS:
+      return process.env.JSON_RPC_PROVIDER_STRATIS!;
+    case ChainId.STRATIS_AURORIA:
+      return process.env.JSON_RPC_PROVIDER_STRATIS_AURORIA!;
     case ChainId.GOERLI:
       return process.env.JSON_RPC_PROVIDER_GORLI!;
     case ChainId.SEPOLIA:
@@ -365,6 +388,20 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WETH',
     'Wrapped Ether'
+  ),
+  [ChainId.STRATIS]: new Token(
+    105105,
+    '0xeA705D2DbD8DE7Dc70Db7B531D0F620d9CeE9d18',
+    18,
+    'WSTRAX',
+    'Wrapped STRAX'
+  ),
+  [ChainId.STRATIS_AURORIA]: new Token(
+    205205,
+    '0x6f39A32C3E7A54164e1C6E201979aec276B0Da8E',
+    18,
+    'WSTRAX',
+    'Wrapped STRAX'
   ),
   [ChainId.GOERLI]: new Token(
     5,
@@ -557,6 +594,32 @@ class MaticNativeCurrency extends NativeCurrency {
   }
 }
 
+function isStrax(
+  chainId: number
+): chainId is ChainId.STRATIS | ChainId.STRATIS_AURORIA {
+  return chainId === ChainId.STRATIS || chainId === ChainId.STRATIS_AURORIA;
+}
+
+class StraxNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+
+  get wrapped(): Token {
+    if (!isStrax(this.chainId)) throw new Error('Not STRAX');
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+
+  public constructor(chainId: number) {
+    if (!isStrax(chainId)) throw new Error('Not STRAX');
+    super(chainId, 18, 'STRAX', 'Stratis STRAX');
+  }
+}
+
 function isCelo(
   chainId: number
 ): chainId is ChainId.CELO | ChainId.CELO_ALFAJORES {
@@ -706,6 +769,8 @@ export function nativeOnChain(chainId: number): NativeCurrency {
   }
   if (isMatic(chainId)) {
     cachedNativeCurrency[chainId] = new MaticNativeCurrency(chainId);
+  } else if (isStrax(chainId)) {
+    cachedNativeCurrency[chainId] = new StraxNativeCurrency(chainId);
   } else if (isCelo(chainId)) {
     cachedNativeCurrency[chainId] = new CeloNativeCurrency(chainId);
   } else if (isGnosis(chainId)) {

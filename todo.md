@@ -1,0 +1,1 @@
+- [ ] Deploy V2Quoter contract to all supported networks

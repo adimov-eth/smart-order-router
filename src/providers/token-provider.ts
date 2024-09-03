@@ -333,6 +333,47 @@ export const USDC_ARBITRUM_SEPOLIA = new Token(
   'USD//C'
 );
 
+export const WSTRAX_STRATIS = new Token(
+  ChainId.STRATIS,
+  '0xeA705D2DbD8DE7Dc70Db7B531D0F620d9CeE9d18',
+  18,
+  'WSTRAX',
+  'Wrapped STRAX'
+);
+
+export const USDT_STRATIS = new Token(
+  ChainId.STRATIS,
+  '0xe46f25Af64467c21a01c20Ae0edf94E2Ed934c5C',
+  6,
+  'USDT',
+  'Tether USD'
+);
+
+export const USDC_STRATIS = new Token(
+  ChainId.STRATIS,
+  '0xDD0C4bb4b46A1C10D36593E4FA5F76abdB583f7A',
+  6,
+  'USDC',
+  'USD//C'
+);
+
+export const WSTRAX_STRATIS_AURORIA = new Token(
+  ChainId.STRATIS_AURORIA,
+  '0x6f39A32C3E7A54164e1C6E201979aec276B0Da8E',
+  18,
+  'WSTRAX',
+  'Wrapped STRAX'
+);
+
+export const USDC_STRATIS_AURORIA = new Token(
+  ChainId.STRATIS_AURORIA,
+  '0x673E35439E5dE07e0d9C43632FBd9096F2eb372D',
+  6,
+  'USDC',
+  'USD//C'
+);
+
+
 //polygon tokens
 export const WMATIC_POLYGON = new Token(
   ChainId.POLYGON,
@@ -912,6 +953,8 @@ export const USDT_ON = (chainId: ChainId): Token => {
   switch (chainId) {
     case ChainId.MAINNET:
       return USDT_MAINNET;
+    case ChainId.STRATIS:
+      return USDT_STRATIS;
     case ChainId.GOERLI:
       return USDT_GOERLI;
     case ChainId.OPTIMISM:
@@ -933,6 +976,10 @@ export const USDC_ON = (chainId: ChainId): Token => {
   switch (chainId) {
     case ChainId.MAINNET:
       return USDC_MAINNET;
+    case ChainId.STRATIS:
+      return USDC_STRATIS;
+    case ChainId.STRATIS_AURORIA:
+      return USDC_STRATIS_AURORIA;
     case ChainId.GOERLI:
       return USDC_GOERLI;
     case ChainId.SEPOLIA:

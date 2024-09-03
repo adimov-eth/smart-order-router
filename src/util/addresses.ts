@@ -19,6 +19,8 @@ export const BNB_V3_MIGRATOR_ADDRESS =
 
 export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(FACTORY_ADDRESS),
+  [ChainId.STRATIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS].v3CoreFactoryAddress,
+  [ChainId.STRATIS_AURORIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS_AURORIA].v3CoreFactoryAddress,
   [ChainId.CELO]: CHAIN_TO_ADDRESSES_MAP[ChainId.CELO].v3CoreFactoryAddress,
   [ChainId.CELO_ALFAJORES]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.CELO_ALFAJORES].v3CoreFactoryAddress,
@@ -46,6 +48,8 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
 
 export const QUOTER_V2_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0x61fFE014bA17989E743c5F6cB21bF9697530B21e'),
+  [ChainId.STRATIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS].quoterAddress,
+  [ChainId.STRATIS_AURORIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS_AURORIA].quoterAddress,
   [ChainId.CELO]: CHAIN_TO_ADDRESSES_MAP[ChainId.CELO].quoterAddress,
   [ChainId.CELO_ALFAJORES]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.CELO_ALFAJORES].quoterAddress,
@@ -99,6 +103,8 @@ export const MIXED_ROUTE_QUOTER_V1_ADDRESSES: AddressMap = {
 
 export const UNISWAP_MULTICALL_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0x1F98415757620B543A52E61c46B32eB19261F984'),
+  [ChainId.STRATIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS].multicallAddress,
+  [ChainId.STRATIS_AURORIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS_AURORIA].multicallAddress,
   [ChainId.CELO]: CHAIN_TO_ADDRESSES_MAP[ChainId.CELO].multicallAddress,
   [ChainId.CELO_ALFAJORES]:
     CHAIN_TO_ADDRESSES_MAP[ChainId.CELO_ALFAJORES].multicallAddress,
@@ -138,12 +144,21 @@ export const STATE_VIEW_ADDRESSES: AddressMap = {
 export const OVM_GASPRICE_ADDRESS =
   '0x420000000000000000000000000000000000000F';
 export const ARB_GASINFO_ADDRESS = '0x000000000000000000000000000000000000006C';
-export const TICK_LENS_ADDRESS =
-  CHAIN_TO_ADDRESSES_MAP[ChainId.ARBITRUM_ONE].tickLensAddress;
-export const NONFUNGIBLE_POSITION_MANAGER_ADDRESS =
-  CHAIN_TO_ADDRESSES_MAP[ChainId.MAINNET].nonfungiblePositionManagerAddress;
-export const V3_MIGRATOR_ADDRESS =
-  CHAIN_TO_ADDRESSES_MAP[ChainId.MAINNET].v3MigratorAddress;
+export const TICK_LENS_ADDRESS: AddressMap = {
+  [ChainId.ARBITRUM_ONE]: CHAIN_TO_ADDRESSES_MAP[ChainId.ARBITRUM_ONE].tickLensAddress,
+  [ChainId.STRATIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS].tickLensAddress,
+  [ChainId.STRATIS_AURORIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS_AURORIA].tickLensAddress,
+}
+export const NONFUNGIBLE_POSITION_MANAGER_ADDRESS: AddressMap = {
+  [ChainId.MAINNET]: CHAIN_TO_ADDRESSES_MAP[ChainId.MAINNET].nonfungiblePositionManagerAddress,
+  [ChainId.STRATIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS].nonfungiblePositionManagerAddress,
+  [ChainId.STRATIS_AURORIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS_AURORIA].nonfungiblePositionManagerAddress,
+}
+export const V3_MIGRATOR_ADDRESS: AddressMap = {
+  [ChainId.MAINNET]: CHAIN_TO_ADDRESSES_MAP[ChainId.MAINNET].v3MigratorAddress,
+  [ChainId.STRATIS]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS].v3MigratorAddress,
+  [ChainId.STRATIS_AURORIA]: CHAIN_TO_ADDRESSES_MAP[ChainId.STRATIS_AURORIA].v3MigratorAddress,
+}
 export const MULTICALL2_ADDRESS = '0x5BA1e12693Dc8F9c48aAD8770482f4739bEeD696';
 
 export type AddressMap = { [chainId: number]: string | undefined };
@@ -165,6 +180,8 @@ export function constructSameAddressMap<T extends string>(
 export const WETH9: {
   [chainId in Exclude<
     ChainId,
+    | ChainId.STRATIS
+    | ChainId.STRATIS_AURORIA
     | ChainId.POLYGON
     | ChainId.POLYGON_MUMBAI
     | ChainId.CELO

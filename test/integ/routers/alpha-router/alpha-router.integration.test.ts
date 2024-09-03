@@ -127,6 +127,8 @@ const LARGE_SLIPPAGE = new Percent(45, 100); // 5% or 10_000?
 // We may need to tune them if we change the FORK_BLOCK
 const GAS_ESTIMATE_DEVIATION_PERCENT: { [chainId in ChainId]: number } = {
   [ChainId.MAINNET]: 50,
+  [ChainId.STRATIS]: 50,
+  [ChainId.STRATIS_AURORIA]: 50,
   [ChainId.GOERLI]: 62,
   [ChainId.SEPOLIA]: 50,
   [ChainId.OPTIMISM]: 61,
@@ -3395,6 +3397,8 @@ describe('external class tests', () => {
 describe('quote for other networks', () => {
   const TEST_ERC20_1: { [chainId in ChainId]: () => Token } = {
     [ChainId.MAINNET]: () => USDC_ON(ChainId.MAINNET),
+    [ChainId.STRATIS]: () => USDC_ON(ChainId.STRATIS),
+    [ChainId.STRATIS_AURORIA]: () => USDC_ON(ChainId.STRATIS_AURORIA),
     [ChainId.GOERLI]: () => UNI_GOERLI,
     [ChainId.SEPOLIA]: () => USDC_ON(ChainId.SEPOLIA),
     [ChainId.SEPOLIA]: () => V4_SEPOLIA_TEST_OP,
@@ -3426,6 +3430,8 @@ describe('quote for other networks', () => {
     [ChainId.ZKSYNC]: () => USDC_ON(ChainId.ZKSYNC),
   };
   const TEST_ERC20_2: { [chainId in ChainId]: () => Token } = {
+    [ChainId.STRATIS]: () => DAI_ON(ChainId.STRATIS),
+    [ChainId.STRATIS_AURORIA]: () => DAI_ON(ChainId.STRATIS_AURORIA),
     [ChainId.MAINNET]: () => DAI_ON(1),
     [ChainId.GOERLI]: () => DAI_ON(ChainId.GOERLI),
     [ChainId.SEPOLIA]: () => DAI_ON(ChainId.SEPOLIA),
